@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+	<SCRIPT LANGUAGE="JavaScript">
+	<!--
+	// Some variables:
+	var numClients = 5; // the number of clients to show
+
+	// This is the constructor for the client object which
+	// holds the project name and directory location of each
+	// client.
+	function client(name, url) {
+		this.name = name;
+		this.url  = url;
+	}
+
+	// These are the clients.
+	var clients = new Array();
+	clients[0] = new client("Bankard", "bankard");
+	clients[1] = new client("BusinessWorld", "businessworld");
+	clients[2] = new client("Orchard", "orchard");
+	clients[3] = new client("Siemens", "siemensmp");
+	clients[4] = new client("Siemens", "siemensweb");
+	//-->
+	</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#CCCCCC" BACKGROUND="../bg.gif" TEXT="#000000" LINK="#000066" VLINK="#666699" ALINK="#3333CC">
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH=147>
+<TR>
+    <TD><IMG SRC="../../../shared/pixel.gif" WIDTH=8 HEIGHT=1 BORDER=0></TD>
+    <TD>
+		<FONT FACE="arial,helvetica" SIZE=-1>
+		<SCRIPT LANGUAGE="JavaScript">
+		<!--
+		var random, firsturl;
+		var length = clients.length;
+		for (var i = 1; i <= numClients; i++) {
+			random = Math.ceil(Math.random() * length) - 1;
+			if (i == 1) {firsturl = clients[random].url;}
+			document.write('<A HREF="../clients/' + clients[random].url + '/index.html" TARGET="showcase">' + clients[random].name + "</A><P>");
+			for (var j = random; j < length - 1; j++) {
+				clients[j] = clients[j+1];
+			}
+			length--;
+		}
+		<!-- This should use an absolute reference. -->
+		parent.frames[4].location = "file://Infinite 4/infinite/portfolio/showcase/clients/" + firsturl + "/index.html";
+		//-->
+		</SCRIPT>
+		</FONT></TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+	<SCRIPT LANGUAGE="JavaScript">
+	<!--
+	// Some variables:
+	var numClients = 10; // the number of clients to show
+
+	// This is the constructor for the client object which
+	// holds the project name and directory location of each
+	// client.
+	function client(name, url) {
+		this.name = name;
+		this.url  = url;
+	}
+
+	// These are the clients.
+	var clients = new Array();
+clients[0] = new client("Voodoo-Cycles","voodoo");
+clients[1] = new client("Orchard Golf and Country Club","orchard");
+clients[2] = new client("Siemens 150th Anniversary","siemensmp");
+clients[3] = new client("Servinet Consulting","servinet");
+clients[4] = new client("BusinessWorld Top 1000 Corporations","businessworld");
+clients[5] = new client("Go Philippines!","gopi");
+clients[6] = new client("Malacanang Palace","malacanang");
+clients[7] = new client("Orion Technologies Philippines","aadfi");
+clients[8] = new client("ImagineAsia","imagineasia");
+clients[9] = new client("PC World Philippines","pcworld");
+clients[10] = new client("Whilce Portacio's Stone","whilce");
+clients[11] = new client("Worldshoot XII 1999","worldshoot");
+clients[12] = new client("ES Technologies International","estii");
+clients[13] = new client("Expo 2002","expo");
+clients[14] = new client("From Britain to the Philippines","britishcd");
+clients[15] = new client("Ensemble Solutions","ensemble");
+clients[16] = new client("APEC Means Business","apec");
+clients[17] = new client("Philippines Means Business","philmeansbusiness");
+clients[18] = new client("FEBTC Guide to Doing Business in the Philippines","fareastbank");
+clients[19] = new client("One Pangasinan","onepangasinan");
+clients[20] = new client("Banking on the Philippines","bankingphil");
+clients[21] = new client("BusinessWorld Interactive","businessworldint");
+clients[22] = new client("Investing in Philippine Island Destinations","tourism");
+clients[23] = new client("P & G Pampers","pampers");
+clients[24] = new client("Ace Saatchi & Saatchi (Hi-Nulac)","whey1");
+clients[25] = new client("Brent International School","brent");
+clients[26] = new client("British Embassy MP","britishmp");
+clients[27] = new client("British Airways","britair");
+clients[28] = new client("California Healthy Kids","chk");
+clients[29] = new client("WorldRoom","worldroom");
+clients[30] = new client("Toyota","toyota");
+clients[31] = new client("Mitsubishi Motor World","mitsubishi");
+clients[32] = new client("Nissan","nissan");
+clients[33] = new client("Streetlife","streetlife");
+clients[34] = new client("BOI Investmart '97","boi");
+clients[35] = new client("Wynsum Coporate Plaza","wynsum");
+clients[36] = new client("Philippines Yearbook","philyearbook");
+clients[37] = new client("DBP: An Investor's Guide","dbp");
+clients[38] = new client("SmartAge","smartage");
+clients[39] = new client("Delos Reyes Foundation","museum");
+clients[40] = new client("Go Philippines!","gopikiosk");
+clients[41] = new client("Crown Asia","crownasia");
+clients[42] = new client("Pioneer Highlands","pioneer");
+clients[43] = new client("FEBTC SAM","febtc");
+clients[44] = new client("Johnson & Johnson Baby Discover Touchscreen","johnson");
+clients[45] = new client("British Airways Quiz Show","britairquiz");
+clients[46] = new client("SunReno","sunrenomp");
+clients[47] = new client("Zymafluor","zymafluor");
+clients[48] = new client("Cebu Pacific","cebupacific");
+clients[49] = new client("Aboitiz","aboitiz");
+clients[50] = new client("AdAsia '97","adasia");
+clients[51] = new client("Board of Investments","boi2");
+clients[52] = new client("Stone CD Extra","stonecd");
+clients[53] = new client("Audio Review","audioreview");
+clients[54] = new client("Net-Raffle","netraffle");
+clients[55] = new client("Titec","titec");
+clients[56] = new client("Youtopia","kidsinit");
+clients[57] = new client("Your Pregnancy","yourpregnancy");
+clients[58] = new client("Megacom","megacom");
+clients[59] = new client("Litton Mills","littonmills");
+	//-->
+	</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#CCCCCC" BACKGROUND="../bg.gif" TEXT="#000000" LINK="#000066" VLINK="#666699" ALINK="#3333CC">
+
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH=140>
+<TR>
+    <TD><IMG SRC="../../../shared/pixel.gif" WIDTH=8 HEIGHT=1 BORDER=0></TD>
+    <TD>
+		<FONT FACE="arial,helvetica" SIZE=-1>
+		<SCRIPT LANGUAGE="JavaScript">
+		<!--
+		var random, firsturl;
+		var length = clients.length;
+		for (var i = 1; i <= numClients; i++) {
+			random = Math.ceil(Math.random() * length) - 1;
+			if (i == 1) {firsturl = clients[random].url;}
+			document.write('<A HREF="../clients/' + clients[random].url + '/index.html" TARGET="showcase">' + clients[random].name + "</A><P>");
+			for (var j = random; j < length - 1; j++) {
+				clients[j] = clients[j+1];
+			}
+			length--;
+		}
+		// This should use an absolute reference.
+		parent.frames[4].location = "/portfolio/showcase/clients/" + firsturl + "/index.html";
+		//-->
+		</SCRIPT>
+		</FONT></TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

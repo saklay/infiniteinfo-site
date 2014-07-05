@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+  <TITLE>TaskTracker</TITLE>
+</HEAD>
+<BODY BGCOLOR="FFFFFF">
+<P>
+<IMG SRC="btmast.gif" ALT="" WIDTH="490" HEIGHT="116">
+
+<P>
+<H2>Hot Buttons</H2>
+
+<FORM METHOD="POST" ACTION="http:/NS/Db/SearchQBF/i4/tasks">
+
+<INPUT TYPE="hidden" NAME="ColSelected.number" VALUE="on">
+<INPUT TYPE="hidden" NAME="ColSelected.project" VALUE="on">
+<INPUT TYPE="hidden" NAME="ColSelected.status" VALUE="on">
+<INPUT TYPE="hidden" NAME="ColSelected.severity" VALUE="on">
+<INPUT TYPE="hidden" NAME="ColSelected.due_date" VALUE="on">
+<INPUT TYPE="hidden" NAME="ColSelected.whose" VALUE="on">
+<INPUT TYPE="hidden" NAME="ColSelected.reporter" VALUE="on">
+<INPUT TYPE="hidden" NAME="ColSelected.summary" VALUE="on">
+
+<INPUT TYPE="SUBMIT" VALUE="Find">
+<INPUT TYPE="hidden" NAME="ColOperator.whose" VALUE="=">
+<SELECT NAME="ColValue.whose" size=1>
+<OPTION value="" selected>anyone
+<!--#nstcl script="
+# Query the database and display all the products.
+set whose {}
+set db [ns_db gethandle]
+set row [ns_db select $db \
+            [ns_column value $db tasks whose htmltag_data]]
+while { [ns_db getrow $db $row] } {
+    append whose {<OPTION value='} [ns_set get $row name] {'>&nbsp;&nbsp;} [ns_set get $row name] \n
+}
+set whose" -->
+</SELECT>
+'s
+<INPUT TYPE="hidden" NAME="ColOperator.status" VALUE="=">
+<SELECT NAME="ColValue.status" size=1>
+<OPTION value="">
+<OPTION value="Open" selected>Open
+<OPTION value="Fixed">Fixed
+<OPTION value="Closed">Closed
+<OPTION value="Suspended">Suspended
+<OPTION value="Duplicate">Duplicate
+</SELECT>
+tasks<BR>
+in
+<INPUT TYPE="hidden" NAME="ColOperator.project" VALUE="=">
+<SELECT NAME="ColValue.project" size=1>
+<OPTION value="" selected>any
+<!--#nstcl script="
+# Query the database and display all the products.
+set projects {}
+set db [ns_db gethandle]
+set row [ns_db select $db \
+            [ns_column value $db tasks project htmltag_data]]
+while { [ns_db getrow $db $row] } {
+    append projects {<OPTION value='} [ns_set get $row name] {'>&nbsp;&nbsp;} [ns_set get $row name] \n
+}
+set projects" -->
+</SELECT>
+project<BR>
+order by
+<SELECT NAME="OrderBy.0" size=1>
+<OPTION value="">any column
+<!--#nstcl script="
+# Show all the columns for the tasks table.
+set columns {}
+set db [ns_db gethandle]
+foreach column [set printablecolumns [ns_listprintablecolumns $db tasks]] {
+    if [string match due_date $column] {
+        set selected { selected}
+    } else {
+        set selected {}
+    }
+    append columns {<OPTION value='} $column {'} $selected {>&nbsp;&nbsp;} [ns_column value $db tasks $column description] \n
+}
+foreach column $printablecolumns {
+    append columns {<OPTION value='} $column { (reverse order)'>&nbsp;&nbsp;} [ns_column value $db tasks $column description] { (reverse order)} \n
+}
+set columns" -->
+</SELECT>
+
+<P>
+<CENTER>
+<INPUT TYPE="BUTTON" VALUE="New Task" onClick="parent.location.href='/NS/Db/GetEntryForm/i4/tasks'">
+<INPUT TYPE="BUTTON" VALUE="Search Tasks" onClick="parent.location.href='/NS/Db/GetSearchForm/i4/tasks'">
+</CENTER>
+</FORM>
+
+  <HR>
+
+<P>
+<H2>Reports</H2>
+
+<A HREF="reports/taskreport.tcl">Status Report</A><BR>
+<A HREF="reports/overdue.tcl">Overdue Report</A>
+<P>
+  <HR>
+
+<P>
+<H2>Admin</H2>
+
+<A HREF="/NS/Db/GetEntryForm/i4/projects">Add a new project</A>
+<BR>
+<A HREF="/NS/Db/SearchQBF/i4/projects">List the projects</A>
+<BR>
+<A HREF="/NS/Db/GetSearchForm/i4/projects">Search the projects</A>
+
+<P>
+<A HREF="/NS/Db/GetEntryForm/i4/folks">Add a member to the team</A>
+<BR>
+<A HREF="/NS/Db/GetSearchForm/i4/folks">Search the team members</A>
+
+<P>
+<A HREF="/NS/Db/GetEntryForm/i4/platforms">Add a platform</A>
+<BR>
+<A HREF="/NS/Db/SearchQBF/i4/platforms">List the platforms</A>
+
+<P>
+<A HREF="/NS/Db/GetEntryForm/i4/browsers">Add a browser</A>
+<BR>
+<A HREF="/NS/Db/SearchQBF/i4/browsers">List the browsers</A>
+<P>
+  <HR>
+<P>
+</BODY></HTML>

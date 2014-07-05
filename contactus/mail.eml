@@ -1,0 +1,44 @@
+alocke@infiniteinfo.com,rlocke@infiniteinfo.com
+#Email
+Quotation Request - #Name
+
+Name:       #Name
+Email:      #Email
+Company:    #Company
+Title:      #Title
+Website:    http://www.#website
+
+Contact Info:
+        #address1
+        #address2
+        #City
+	#Province
+	#Zip
+	#Country
+	#Phone (phone)
+	#Fax (fax)		
+
+Description
+        #description
+
+Needs:
+	#web
+	#cdrom
+	#mp
+	#intranet
+	#extranet
+	#cbt
+	#graphics
+	#animation
+	#testing
+	#content
+	#bannerads
+	#other
+
+Project Purpose:
+        #purpose
+
+Budget: #budget
+
+Comments:	
+        #comments
